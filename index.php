@@ -5,21 +5,21 @@
 
 	<!-- Highlight -->
 	<div id="highlight">
-
-		<!-- Outras Notícias -->
-          <div id="other-posts">
-            <li>
-              <a class="bordaNeg" href="http://www.ctav.gov.br/carta-de-servicos-ao-cidadao/" title="Carta de Serviços do CTAv"><img width="230" height="135" src="http://www.ctav.gov.br/wp-content/uploads/2012/12/carta-imagem.bmp" alt=""></a>
-	      <h4><a href="http://ctav.localhost/categoria/noticias/" title="View all posts in Notícias" rel="category tag">Notícias</a></h4>
-	      <h3><a href="http://www.ctav.gov.br/carta-de-servicos-ao-cidadao/" title="Carta de Serviços do CTAv">Carta de Serviços do CTAv</a></h3>
-	      <a href="http://www.ctav.gov.br/carta-de-servicos-ao-cidadao/&quot;" title="Carta de Serviços do CTAv">Acesse aqui</a>
-             </li>
+	  <!-- Destaque -->
+          <div id="destaque" class="bloco-home">
+	    <h2>Destaques</h2>
+	    <ul>
 <?php
-$sticky = get_option( 'sticky_posts' );
+$cat_destaque = get_category_by_slug('destaque');
+$cat_outras_noticias = get_category_by_slug('outras_noticias');
+$cat_area_1 = get_category_by_slug('area_1');
+$cat_area_2 = get_category_by_slug('area_2');
+$cat_area_3 = get_category_by_slug('area_3');
 
-$posts_destaque = new WP_Query(array('posts_per_page' => '2',  'post__in' => get_option('sticky_posts') ));
+// area_1
+$posts_destaque = new WP_Query(array('posts_per_page' => '1', 'category__and' => array($cat_destaque->term_id, $cat_area_1->term_id)));
+
 if ($posts_destaque->have_posts()) { ?>
-    <ul>
     <?php while ($posts_destaque->have_posts()) : $posts_destaque->the_post(); ?>
         <li>
             <a href="<?php the_permalink(); ?>" class="bordaNeg" title="<?php the_title(); ?>"><?php if ( has_post_thumbnail() )  the_post_thumbnail(array(230, 135) ); ?></a>
@@ -28,10 +28,82 @@ if ($posts_destaque->have_posts()) { ?>
             <a href="<?php the_permalink(); ?>"><?php the_excerpt(); ?></a>
         </li>
     <?php endwhile; ?>
-    </ul>
-<?php    
-}
-?>
+<?php } ?>
+<?php 
+// area_2
+$posts_destaque = new WP_Query(array('posts_per_page' => '1', 'category__and' => array($cat_destaque->term_id, $cat_area_2->term_id)));
+if ($posts_destaque->have_posts()) { ?>
+    <?php while ($posts_destaque->have_posts()) : $posts_destaque->the_post(); ?>
+        <li>
+            <a href="<?php the_permalink(); ?>" class="bordaNeg" title="<?php the_title(); ?>"><?php if ( has_post_thumbnail() )  the_post_thumbnail(array(230, 135) ); ?></a>
+	    <h4><a rel="category tag" title="View all posts in Notícias" href="http://www.ctav.gov.br/categoria/noticias/">Notícias</a></h4>
+	    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+            <a href="<?php the_permalink(); ?>"><?php the_excerpt(); ?></a>
+        </li>
+    <?php endwhile; ?>
+    <?php } ?>
+<?php 
+// area_3
+$posts_destaque = new WP_Query(array('posts_per_page' => '1', 'category__and' => array($cat_destaque->term_id, $cat_area_3->term_id)));
+if ($posts_destaque->have_posts()) { ?>
+    <?php while ($posts_destaque->have_posts()) : $posts_destaque->the_post(); ?>
+        <li>
+            <a href="<?php the_permalink(); ?>" class="bordaNeg" title="<?php the_title(); ?>"><?php if ( has_post_thumbnail() )  the_post_thumbnail(array(230, 135) ); ?></a>
+	    <h4><a rel="category tag" title="View all posts in Notícias" href="http://www.ctav.gov.br/categoria/noticias/">Notícias</a></h4>
+	    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+            <a href="<?php the_permalink(); ?>"><?php the_excerpt(); ?></a>
+        </li>
+    <?php endwhile; ?>
+<?php } ?>        
+	    </ul>    
+            <br clear="all">	    
+	  </div>
+	  
+	  <!-- Outras Notícias -->
+          <div id="other-posts" class="bloco-home">
+	    <h2>Outras notícias</h2>
+	    <ul>
+<?php
+// area_1
+    $posts_outras_noticias = new WP_Query(array('posts_per_page' => '1', 'category__and' => array($cat_outras_noticias->term_id, $cat_area_1->term_id), 'category_not_in' => array($cat->destaque->term_id)));
+
+if ($posts_outras_noticias->have_posts()) { ?>
+    <?php while ($posts_outras_noticias->have_posts()) : $posts_outras_noticias->the_post(); ?>
+        <li>
+            <a href="<?php the_permalink(); ?>" class="bordaNeg" title="<?php the_title(); ?>"><?php if ( has_post_thumbnail() )  the_post_thumbnail(array(230, 135) ); ?></a>
+	    <h4><a rel="category tag" title="View all posts in Notícias" href="http://www.ctav.gov.br/categoria/noticias/">Notícias</a></h4>
+	    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+            <a href="<?php the_permalink(); ?>"><?php the_excerpt(); ?></a>
+        </li>
+    <?php endwhile; ?>
+<?php } ?>
+<?php 
+// area_2
+$posts_outras_noticias = new WP_Query(array('posts_per_page' => '1', 'category__and' => array($cat_outras_noticias->term_id, $cat_area_2->term_id)));
+if ($posts_outras_noticias->have_posts()) { ?>
+    <?php while ($posts_outras_noticias->have_posts()) : $posts_outras_noticias->the_post(); ?>
+        <li>
+            <a href="<?php the_permalink(); ?>" class="bordaNeg" title="<?php the_title(); ?>"><?php if ( has_post_thumbnail() )  the_post_thumbnail(array(230, 135) ); ?></a>
+	    <h4><a rel="category tag" title="View all posts in Notícias" href="http://www.ctav.gov.br/categoria/noticias/">Notícias</a></h4>
+	    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+            <a href="<?php the_permalink(); ?>"><?php the_excerpt(); ?></a>
+        </li>
+    <?php endwhile; ?>
+    <?php } ?>
+<?php 
+// area_3
+$posts_outras_noticias = new WP_Query(array('posts_per_page' => '1', 'category__and' => array($cat_outras_noticias->term_id, $cat_area_3->term_id)));
+if ($posts_outras_noticias->have_posts()) { ?>
+    <?php while ($posts_outras_noticias->have_posts()) : $posts_outras_noticias->the_post(); ?>
+        <li>
+            <a href="<?php the_permalink(); ?>" class="bordaNeg" title="<?php the_title(); ?>"><?php if ( has_post_thumbnail() )  the_post_thumbnail(array(230, 135) ); ?></a>
+	    <h4><a rel="category tag" title="View all posts in Notícias" href="http://www.ctav.gov.br/categoria/noticias/">Notícias</a></h4>
+	    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+            <a href="<?php the_permalink(); ?>"><?php the_excerpt(); ?></a>
+        </li>
+    <?php endwhile; ?>
+<?php } ?>        
+	    </ul>
             <br clear="all">
           </div>
 	</div>

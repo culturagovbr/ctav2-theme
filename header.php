@@ -139,8 +139,9 @@
             <?php wp_list_pages('depth=1&title_li=&sort_column=menu_order&hide_empty=0&child_of=104'); ?>
           </ul>
         </li>
-        <?php wp_list_categories('depth=2&title_li=&use_desc_for_title=0&hide_empty=0&orderby=order&exclude=8&exclude_tree=121'); ?>
-        <?php wp_list_pages('depth=2&title_li=&sort_column=menu_order&hide_empty=0&orderby=order&exclude=104,252,538,618'); ?>
+<?php $inicial = get_category_by_slug('inicial')->term_id;?>
+<?php wp_list_categories("depth=2&title_li=&use_desc_for_title=0&hide_empty=0&orderby=order&exclude=8&exclude_tree=$inicial"); ?>
+<?php wp_list_pages("depth=2&title_li=&sort_column=menu_order&hide_empty=0&orderby=order&exclude=104,252,538,618"); ?>
         </ul>
       </div>
 

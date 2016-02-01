@@ -482,12 +482,12 @@ body{
 /**************************************************************************************************
   Outras Notícias
 **************************************************************************************************/
-#other-posts
+.bloco-home
 {
   width:728px;
 }
 
-#other-posts h2
+.bloco-home h2
 {
   height:43px;
   margin:5px;
@@ -502,25 +502,25 @@ body{
   letter-spacing:-1px;
 }
 
-#other-posts a
+.bloco-home a
 {
   color:#3c3c3c;
   text-decoration:none;
 }
 
-#other-posts a:hover
+.bloco-home a:hover
 {
   color:#212121;
   text-decoration:none;
 }
 
-#other-posts h3
+.bloco-home h3
 {
   margin:0 0 5px 0 !important;
   clear:both;
 }
 
-#other-posts h3 a
+.bloco-home h3 a
 {
   color:#2b2b2b;
   font:14px Arial, Helvetica, sans-serif;
@@ -528,13 +528,13 @@ body{
   text-decoration:none;
 }
 
-#other-posts h3 a:hover
+.bloco-home h3 a:hover
 {
   color:#333;
   text-decoration:underline;
 }
 
-#other-posts h4 a
+.bloco-home h4 a
 {
   color:#969696;
   font:12px Arial, Helvetica, sans-serif;
@@ -544,12 +544,7 @@ body{
   float:left;
 }
 
-
-
-
-
-
-#other-posts img
+.bloco-home img
 {
   width:230px;
 }
@@ -570,21 +565,19 @@ a.bordaNeg:hover img
 	margin: -4px !important;
 }
 
-
-
-#other-posts ul
+.bloco-home ul
 {
   list-style:none;
 }
 
-#other-posts li
+.bloco-home li
 {
   float:left;
   width:230px;
   padding:6px;
 }
 
-#other-posts li.alter
+.bloco-home li.alter
 {
   margin-bottom:5px;
   background:#eee;

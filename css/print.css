@@ -1,0 +1,490 @@
+/**************************************************************************************************
+  Tags
+**************************************************************************************************/
+*
+{
+  margin:0px;
+  padding:0px;
+  outline:none;
+}
+
+html
+{
+  font:normal 12px Arial, Helvetica;
+}
+
+h1
+{
+  font-size:18px;
+}
+
+h2
+{
+  font-size:14px;
+}
+
+h3
+{
+  font-size:13px;
+}
+
+h4
+{
+  font-size:12px;
+}
+
+h5
+{
+  font-size:11px;
+}
+
+h6
+{
+  font-size:10px;
+}
+
+input, select, textarea, button
+{
+  font:normal 12px Arial, Helvetica;
+}
+
+a
+{
+}
+
+img
+{
+  border:0px;
+}
+
+ul, ol
+{
+}
+
+/**************************************************************************************************
+  Container
+**************************************************************************************************/
+#container
+{
+  margin:0 auto;
+}
+
+/**************************************************************************************************
+  Barra do Governo
+**************************************************************************************************/
+#govbar
+{
+  height:25px;
+  background:#ffcc00;
+}
+
+#govbar .minc
+{
+  float:left;
+  width:152px;
+  height:25px;
+  margin:0px 15px;
+  display:block;
+  text-indent:-5000px;
+  background:url(../img/logo/minc.png) no-repeat;
+}
+
+#govbar .brasil
+{
+  float:right;
+  width:75px;
+  height:25px;
+  display:block;
+  margin:0px 15px;
+  text-indent:-5000px;
+  background:url(../img/logo/brasil.png) no-repeat;
+}
+
+#govbar select
+{
+  float:right;
+  margin:0px 15px;
+  background:#f7f2dc;
+  border:1px solid #ff9900;
+}
+
+/**************************************************************************************************
+  Data
+**************************************************************************************************/
+#date
+{
+  height:36px;
+  font-size:11px;
+  background:#3a3535;
+}
+
+#date span
+{
+  color:#fff;
+  float:left;
+  margin:0px 15px;
+  line-height:36px;
+}
+
+#date .rss
+{
+  display:none;
+}
+
+#date .site-map
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Cabeçalho
+**************************************************************************************************/
+#header
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Menu
+**************************************************************************************************/
+#menu
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  BreadCrumb
+**************************************************************************************************/
+#breadcrumb
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Body
+**************************************************************************************************/
+#body
+{
+  float:left;
+  margin:20px 10px 10px 10px;
+}
+
+/**************************************************************************************************
+  Archive
+**************************************************************************************************/
+#archive .archive-title
+{
+  color:#16669c;
+  margin-bottom:5px;
+  font-size:22px;
+  font-weight:normal;
+}
+
+#archive .archive-description
+{
+  color:#16669c;
+  margin-bottom:15px;
+}
+
+#archive .archive-published
+{
+  color:#16669c;
+  font-size:11px;
+}
+
+#archive .archive-author
+{
+}
+
+#archive li
+{
+  margin-bottom:10px;
+  padding:10px;
+  list-style:none;
+  background:#f0f5f8;
+}
+
+#archive li.alter
+{
+  background:#e4f0f7;
+}
+
+#archive li a
+{
+  color:#555;
+  margin:5px 0px;
+  text-decoration:none;
+}
+
+#archive li h2
+{
+  margin-bottom:10px;
+}
+
+#archive li h2 a
+{
+  color:#16669c;
+  text-decoration:none;
+}
+
+/**************************************************************************************************
+  Post
+**************************************************************************************************/
+#post .post-title
+{
+  color:#16669c;
+  margin-bottom:5px;
+  font-size:22px;
+}
+
+#post .post-description
+{
+  color:#16669c;
+  margin-bottom:15px;
+}
+
+#post .post-published
+{
+  font-weight:bold;
+}
+
+#post .post-author
+{
+  margin-bottom:20px;
+}
+
+#post .post-tags
+{
+  color:#737373;
+  margin:10px 0px;
+  padding:10px;
+  background:#f5f5f5;
+}
+
+#post .post-tags h3
+{
+  text-transform:uppercase;
+}
+
+#post .post-tags a
+{
+  color:#737373;
+  text-decoration:none;
+}
+
+#post .options
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Anexos
+**************************************************************************************************/
+#attachments
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Formulário de Comentário
+**************************************************************************************************/
+#comment-form
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Sidebar
+**************************************************************************************************/
+#sidebar
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Voltar ao Topo
+**************************************************************************************************/
+.backtotop
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Menu Inferior
+**************************************************************************************************/
+#menu-bottom
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Rodapé
+**************************************************************************************************/
+#footer
+{
+  color:#737373;
+  background:#f2f2f2;
+}
+
+#footer .ctav-footer
+{
+  display:none;
+}
+
+#footer .wordpress
+{
+  display:none;
+}
+
+#footer .creative-commons
+{
+  display:none;
+}
+
+#footer .licence
+{
+  margin:10px;
+}
+
+#footer a
+{
+  color:#737373;
+  font-style:italic;
+  text-decoration:none;
+}
+
+#footer p
+{
+  margin:10px;
+}
+
+#footer address
+{
+  margin:10px;
+}
+
+/**************************************************************************************************
+  Classes
+**************************************************************************************************/
+.alignleft
+{
+  float:left;
+  margin:0px 5px 5px 0px;
+}
+
+.alignright
+{
+  float:right;
+  margin:0px 0px 5px 5px;
+}
+
+.aligncenter
+{
+  margin:auto;
+  display:block;
+}
+
+.more-link
+{
+  font-weight:bold;
+}
+
+.comment-wait
+{
+}
+
+.wp-caption
+{
+  background:#f5f5f5;
+}
+
+/**************************************************************************************************
+  Entradas do Usuário
+**************************************************************************************************/
+.entry
+{
+}
+
+.entry h1, .entry h2, .entry h3, .entry h4, .entry h5, .entry h6
+{
+}
+
+.entry a
+{
+  color:#16669c;
+  text-decoration:none;
+}
+
+.entry a:hover
+{
+  text-decoration:underline;
+}
+
+.entry img
+{
+  margin:5px;
+}
+
+.entry blockquote
+{
+  color:#367daa;
+  margin:10px;
+  padding:10px;
+  display:block;
+  font-style:italic;
+  background:#f4f9fc;
+}
+
+.entry code
+{
+  color:#367daa;
+  margin:10px;
+  padding:10px;
+  display:block;
+  font-family:monospace, Courier;
+  background:#f4f9fc;
+  overflow-x:scroll;
+}
+
+.entry address
+{ 
+  margin:10px;
+}
+
+.entry pre
+{
+}
+
+.entry p
+{ 
+  margin-bottom:10px;
+  text-align:justify;
+}
+
+.entry ul
+{
+  list-style-type:square;
+  margin:5px 5px 5px 45px;
+}
+
+.entry ol
+{ 
+  list-style-type:decimal;
+  padding:5px 5px 5px 45px;
+}
+
+.entry em
+{
+}
+
+.entry strong
+{
+}
+
+.entry strike
+{
+}
+
+.entry span
+{
+}

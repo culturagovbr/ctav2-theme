@@ -1,0 +1,55 @@
+.wp-pagenavi{
+	text-align:center;
+	clear:both;
+	margin:10px 0 0 0;
+}
+.wp-pagenavi a{
+	margin:0 3px 0 3px;
+	font-size:13px;
+	font-weight:bold;
+	text-decoration:none;
+}
+.wp-pagenavi .pages{
+	padding-right:15px;
+}
+.wp-pagenavi .current{
+	font-size:17px;
+	font-weight:bold;
+}
+.wp-pagenavi .extend{
+	font-weight:bold;
+}
+
+.wp-paged-comments {
+	float:right;
+	margin: 0 0 5px 0;
+}
+.wp-paged-comments a, #wp-paged-comments a:link, #wp-paged-comments a:active {
+	padding: 2px 4px 2px 4px; 
+	margin: 2px;
+	text-decoration: none;
+	color: #0066cc;
+	background-color: #FFFFFF;	
+}
+.wp-paged-comments a:hover {	
+	color: #114477;
+}
+.wp-paged-comments span.pages {
+	padding: 2px 4px 2px 4px; 
+	margin: 2px 2px 2px 2px;
+	color:#7a7a7a;
+	background-color: #FFFFFF;
+}
+.wp-paged-comments span.current {
+	padding: 2px 4px 2px 4px; 
+	margin: 2px;
+	font-weight: bold;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+.wp-paged-comments span.extend {
+	padding: 2px 4px 2px 4px; 
+	margin: 2px;	
+	color: #000000;
+	background-color: #FFFFFF;
+}

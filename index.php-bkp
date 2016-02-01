@@ -1,0 +1,121 @@
+<?php get_header(); ?>
+
+<!-- Body -->
+<div id="body">
+
+	<!-- Highlight -->
+	<div id="highlight">
+		<h2>Destaque</h2>
+		<?php if(class_exists('covers')) if($covers->have_posts(1)) : ?>
+			<?php //echo "<pre>";var_dump($covers);?>
+			<div id="highlight-cycle">
+				<?php while($covers->have_posts(1)) : $covers->the_post(); ?>
+					<div>
+						<a href="<?php $covers->the_permalink(); ?>" title="<?php $covers->the_title(); ?>"><?php $covers->the_thumb('high', 'width="500" height="235"'); ?></a>
+						<div class="info">
+							<h3><a href="<?php $covers->the_permalink(); ?>" title="<?php $covers->the_title(); ?>"><?php $covers->the_title(); ?></a></h3>
+							 <?php ob_start(); $covers->the_excerpt(); $excerpt = ob_get_contents(); ob_end_clean(); ?>
+					<a href="<?php $covers->the_permalink(); ?>" title="<?php $covers->the_title(); ?>"><?php limit_chars($excerpt, 320); ?></a>
+						</div>
+					</div>
+				<?php endwhile; ?>
+			</div>
+			<ul id="highlight-roll">
+				<li><a href="#" title="sobe" class="up">cima</a></li>
+				<li><a href="#" title="desce" class="down">baixo</a></li>
+			</ul>
+			<div id="highlight-navigator">
+				<ul id="highlight-thumbs">
+				</ul>
+			</div>
+			<br clear="all" />
+		<?php endif; ?>
+
+		<!-- Outras Notícias -->
+		<?php if(class_exists('covers')) if($covers->have_posts(2, 3)) : ?>
+			<div id="other-posts">
+				<h2>Outras Notícias</h2>
+				<ul>
+					<?php while($covers->have_posts(2, 3)) : $covers->the_post(); ?>
+						<?php //echo "entrou2";?>
+						<li <?php if(!($alter = !$alter)) print "class='alter'"; ?>>
+							<a class="bordaNeg" href="<?php $covers->the_permalink(); ?>" title="<?php $covers->the_title(); ?>"><?php $covers->the_thumb('medium', 'width="230" height="135"') ?></a>
+							<h4><?php the_category(', '); ?></h4>
+							<h3><a href="<?php $covers->the_permalink(); ?>" title="<?php $covers->the_title(); ?>"><?php $covers->the_title(); ?></a></h3>
+							 <?php ob_start(); $covers->the_excerpt(); $excerpt = ob_get_contents(); ob_end_clean(); ?>
+					<a href="<?php $covers->the_permalink(); ?>" title="<?php $covers->the_title(); ?>"><?php limit_chars($excerpt, 100); ?></a>
+						</li>
+					<?php endwhile; ?>
+				</ul>
+			</div>
+			<br clear="all" />
+		<?php endif; ?>
+
+	</div>
+
+	<?php $blogs = new WP_Query('p=620'); ?>
+	<?php if($blogs->have_posts()) : $blogs->the_post(); ?>
+		<div id="blogs">
+			<h2>Projetos</h2>
+
+			<div id="blogs-content">
+				<a href="http://www.filmecultura.org.br/" title="<?php the_title(); ?>" target="_blank"><?php the_thumb('high'); ?></a>
+				<?php edit_post_link(__("Edit")); ?>
+				<h3><a href="http://www.filmecultura.org.br/" title="<?php the_title(); ?>" target="_blank"><?php the_title(); ?></a></h3>
+				<?php the_content(); ?>
+				<!--<div class="outrosBlogs"><a href="http://www.cultura.gov.br/site/blogs-do-minc/" title="Outros blogs" target="_blank">Outros Blogs</a></div>-->
+			</div>
+		</div>
+	<?php endif; ?>
+
+	<?php $programs = new WP_Query('cat=8'); ?>
+	<?php if($programs->have_posts()) : ?>
+		<div id="programs">
+			<h2>Programas</h2>
+			<div id="programs-content">
+				<div id="programs-cycle">
+					<?php while($programs->have_posts()) : $programs->the_post(); ?>
+						<div>
+							<?php the_thumb('medium'); ?>
+				<div class="detalhesProgram"><?php the_content(); ?></div>
+						</div>
+					<?php endwhile; ?>
+				</div>
+				<div id="programs-navigator"></div>
+			</div>
+		</div>
+	<?php endif; ?>
+
+	<?php $conheca = new WP_Query('page_id=618'); ?>
+	<?php if($conheca->have_posts()) : $conheca->the_post(); ?>
+		<div id="videos">
+			<h2>Conheça o CTAv</h2>
+			<div id="videos-content">
+				<?php the_content(); ?>
+			</div>
+		</div>
+	<?php endif; ?>
+
+</div>
+
+<?php get_sidebar(); ?>
+
+<!-- Parceiros -->
+<div id="partners">
+	<h2>Parceiros</h2>
+	<ul>
+		<li class="petrobras"><a href="http://www.petrobras.com.br/" title="Petrobras" target="_blank">PetroBras</a></li>
+	</ul>
+	<br clear="all" />
+	<ul>
+		<li class="cinemateca"><a href="http://www.cinemateca.com.br/" title="Cinemateca Brasileira" target="_blank">Cinemateca Brasileira</a></li>
+		<li class="curta-o-curta"><a href="http://www.curtaocurta.com.br/" title="Curta o Curta" target="_blank">Curta o Curta</a></li>
+		<li class="porta-curtas"><a href="http://www.portacurtas.com.br/" title="Porta Curtas" target="_blank">Porta Curtas</a></li>
+		<li class="tempo-glauber"><a href="http://www.tempoglauber.com.br/" title="Tempo Glauber" target="_blank">Tempo Glauber</a></li>
+		<li class="uff"><a href="http://www.uff.br/" title="Universidade Federal Fluminense" target="_blank">UFF</a></li>
+		<!--<li class="darcy-ribeiro"><a href="http://www.escoladarcyribeiro.org.br/cgi/cgilua.exe/sys/start.htm?tpl=home" title="Fundação Darcy Ribeiro" target="_blank">Darcy Ribeiro</a></li>-->
+		<li class="estacio-de-sa"><a href="http://www.estacio.br/" title="Universidade Estácio de Sá" target="_blank">Estácio de Sá</a></li>
+	</ul>
+</div>
+
+<?php get_footer(); ?>

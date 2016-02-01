@@ -79,15 +79,15 @@
           $diretor_cep                     = $Validator->Validate($_POST['diretor_cep'], "CEP do Diretor", "required=1&numeric=1&length=8");
         }
 
-	// Projeto
-        $projeto_metragem                  = $Validator->Validate($_POST['projeto_metragem'], "Metragem", "required=1&length=5");
+        // Projeto
         // se for premio, torna obrigatorio o campo abaixo
-        if ($projeto_metragem_padrao == 'premio') {
+        $tipo_solicitacao                  = $Validator->Validate($_POST['tipo_solicitacao'], "Tipo de Solicitação", "required=1");
+        if ($tipo_solicitacao == 'premio') {
             $projeto_pergunta                  = $Validator->Validate($_POST['projeto_pergunta'], "Especificar Festival, edição e categoria em que recebeu o Prêmio CTAv", "required=1&length=5");
         } else {
             $projeto_pergunta                  = $Validator->Validate($_POST['projeto_pergunta'], "Especificar Festival, edição e categoria em que recebeu o Prêmio CTAv", "length=5");
         }
- 
+        $projeto_metragem                  = $Validator->Validate($_POST['projeto_metragem'], "Metragem", "required=1&length=5");
         $projeto_duracao                   = $Validator->Validate($_POST['projeto_duracao'], "Duração", "required=1&max_length=50");
         $projeto_formato_original          = $Validator->Validate($_POST['projeto_formato_original'], "Formato Original", "required=1&max_length=50");
         $projeto_suporte_original          = $Validator->Validate($_POST['projeto_suporte_original'], "Suporte Original", "required=1&max_length=50");
@@ -111,6 +111,7 @@
         $equipamentos_retirar              = $Validator->Validate($_POST['equipamentos_retirar'], "Retirar item do kit", "required=1&max_length=500");
         $equipamentos_cidade               = $Validator->Validate($_POST['equipamentos_cidade'], "Cidade do Equipamento", "required=1&max_length=100");
         $equipamentos_estado               = $Validator->Validate($_POST['equipamentos_estado'], "Estado do Equipamento", "required=1&length=2");
+        $equipamentos_locacao              = $Validator->Validate($_POST['equipamentos_locacao'], "Descrição da Locação", "max_lengt=1000");
 
         // Filme
         $filme_titulo                      = $Validator->Validate($_POST['filme_titulo'], "Título do Filme", "required=1&max_length=100");
@@ -328,7 +329,7 @@
                 <td colspan='3'>{$equipamentos_locacao}</td>
               </tr>
               <tr>
-                <th align='right'>Cidade:</th>
+                <th align='right'>Cidade: *</th>
                 <td>{$equipamentos_cidade}</td>
                 <th align='right'>Estado:</th>
                 <td>Estado: {$equipamentos_estado}</td>
@@ -338,7 +339,7 @@
                 <td colspan='3'>{$equipamentos_seguro}</td>
               </tr>
               <tr bgcolor='#f6f9fa'>
-                <th align='right'>Retirar item do kit:</th>
+                <th align='right'>Retirar item do kit: *</th>
                 <td colspan='3'>{$equipamentos_retirar}</td>
               </tr>
               <tr>
@@ -457,7 +458,7 @@
           $headers .= "Content-type: text/html; charset=UTF-8;\n";
           $headers .= "X-Mailer: PHP;\n";
           $headers .= "From: MinC <automatico@cultura.gov.br>;\n";
-
+print_r($message);die;
           // Fernão 27/01/2016: ALTEREI DE wp_mail() para mail() pois a primeira não funcionava =/
           // if(wp_mail($to, $subject, $message, $headers)) :
           if(mail($to, $subject, $message, $headers)) :
@@ -658,8 +659,8 @@
               <tr>
               <th align='right' valign='top'>Tipo de Solicitação: *</th>
                 <td colspan='3'>
-                  <input id="projeto_metragem_padrao" class="radio" type='radio' name='tipo_solicitacao' value='padrao' <?php if($tipo_solicitacao == 'padrao') print "checked='checked'"; ?> /> Solicitação padrão <br />
-                  <input id="projeto_metragem_premio" class="radio" type='radio' name='tipo_solicitacao' value='premio' <?php if($tipo_solicitacao == 'premio') print "checked='checked'"; ?> /> Retirada de Prêmio CTAv recebido <br /><br />
+                  <input id="tipo_solicitacao" class="radio" type='radio' name='tipo_solicitacao' value='padrao' <?php if($tipo_solicitacao == 'padrao') print "checked='checked'"; ?> /> Solicitação padrão <br />
+                  <input id="tipo_solicitacao" class="radio" type='radio' name='tipo_solicitacao' value='premio' <?php if($tipo_solicitacao == 'premio') print "checked='checked'"; ?> /> Retirada de Prêmio CTAv recebido <br /><br />
                   
                   <div id="premio" class="oculto">
     			<hr /> <h3>Especificar Festival, edição e categoria em que recebeu o Prêmio CTAv*:</h3>
@@ -750,8 +751,8 @@
               </tr>
               <tr>
                 <th align='right' valign='top'>Período sugerido para filmagem:</th>
-                <td>Início em: <input type='text' name='equipamentos_inicio' size='10' maxlength='10' value='<?php print $equipamentos_inicio; ?>' /></td>
-                <td colspan='2'>Término em: <input type='text' name='equipamentos_termino' size='10' maxlength='10' value='<?php print $equipamentos_termino; ?>' /></td>
+                <td>Início em: *<input type='text' name='equipamentos_inicio' size='10' maxlength='10' value='<?php print $equipamentos_inicio; ?>' /></td>
+                <td colspan='2'>Término em: *<input type='text' name='equipamentos_termino' size='10' maxlength='10' value='<?php print $equipamentos_termino; ?>' /></td>
               </tr>
               <tr bgcolor='#f6f9fa'>
                 <th align='right' valign='top'>Descrição da locação de filmagem/gravação:</th>
@@ -759,7 +760,7 @@
               </tr>
 
               <tr>
-                <th align='right'>Cidade:</th>
+                <th align='right'>Cidade: *</th>
                 <td><input type='text' name='equipamentos_cidade' maxlength='100' value='<?php print $equipamentos_cidade; ?>' /></td>
                 <th align='right'>Estado:</th>
                 <td colspan='2'>
@@ -795,34 +796,34 @@
                 </td>
               </tr>
               <tr>
-                <th align='right'>Está disposto a arcar com os custos do seguro do equipamento pelo período em que o mesmo estiver sob sua responsabilidade?</th>
+                <th align='right'>Está disposto a arcar com os custos do seguro do equipamento pelo período em que o mesmo estiver sob sua responsabilidade? *</th>
                 <td colspan='3'>
                   <input type="radio" name="equipamentos_seguro" value="s" <?php if($equipamentos_seguro == 's') print "checked='checked'"; ?> /> Sim
                   <input type="radio" name="equipamentos_seguro" value="n" <?php if($equipamentos_seguro == 'n') print "checked='checked'"; ?> /> Não
                 </td>
               </tr>
               <tr bgcolor='#f6f9fa'>
-                <th align='right' valign='top'>Deseja retirar algum item do kit? (Não poderá ser feita troca ou  adição de material entre kits de outras câmeras)</th>
+                <th align='right' valign='top'>Deseja retirar algum item do kit? (Não poderá ser feita troca ou  adição de material entre kits de outras câmeras) *</th>
                 <td colspan='3'><input type='text' name='equipamentos_retirar' id='equipamentos_retirar' value='<?php print $equipamentos_retirar; ?>' /></td>
               </tr>
 
               <tr>
-                <th align='right' valign='top'>Nome do profissional responsável por operar a câmera:</th>
+                <th align='right' valign='top'>Nome do profissional responsável por operar a câmera: *</th>
                 <td colspan='3'><input type='text' name='equipamentos_operador' id='equipamentos_operador' value='<?php print $equipamentos_operador; ?>' /></td>
               </tr>
               <tr bgcolor='#f6f9fa'>
-                <th align='right' valign='top'>Em relação ao profissional que irá operar a câmera, o mesmo participou de cursos, oficinas ou workshops para aprender a usar o equipamento solicitado? Se sim, especifique:</th>
+                <th align='right' valign='top'>Em relação ao profissional que irá operar a câmera, o mesmo participou de cursos, oficinas ou workshops para aprender a usar o equipamento solicitado? Se sim, especifique: *</th>
                 <td colspan='3'>  
                   <textarea id='equipamentos_operador_cursos' name='equipamentos_operador_cursos' cols='50' rows='5'><?php print $equipamentos_operador_cursos; ?></textarea><br />
                   <small id="equipamentos_materiais_limit">max. 2000 caracteres</small>
                 </td>  
               </tr>
               <tr>
-                <th align='right' valign='top'>Em relação ao profissional que irá operar a câmera, o mesmo possui experiência profissional com o equipamento solicitado?</th>
+                <th align='right' valign='top'>Em relação ao profissional que irá operar a câmera, o mesmo possui experiência profissional com o equipamento solicitado? *</th>
                 <td colspan='3'><input type='text' name='equipamentos_operador_experiencia' id='equipamentos_operador_experiencia' value='<?php print $equipamentos_operador_experiencia; ?>' /></td> 
               </tr>
               <tr bgcolor='#f6f9fa'>
-                <th align='right' valign='top'>Currículo do profissional que irá operar a câmera:<br />
+                <th align='right' valign='top'>Currículo do profissional que irá operar a câmera: *<br />
                  (Explicitar dados dos filmes em que já trabalhou e a função exercida em cada um)</th>
                 <td colspan='3'>  
                   <textarea id='equipamentos_operador_curriculo' name='equipamentos_operador_curriculo' cols='80' rows='20'><?php print $equipamentos_operador_curriculo; ?></textarea><br />
@@ -912,7 +913,7 @@
                 <td colspan='3'><input type="text" name="filme_distribuidora" maxlength="100" value="<?php print $filme_distribuidora; ?>" /></td>
               </tr>
               <tr bgcolor='#f6f9fa'>
-                <th align='right'>Filmografia do Diretor:</th>
+                <th align='right'>Filmografia do Diretor: *</th>
                 <td colspan='3'><input type="text" name="filme_filmografia" maxlength="100" value="<?php print $filme_filmografia; ?>" /></td>
               </tr>
               <tr>

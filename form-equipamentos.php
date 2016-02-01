@@ -78,13 +78,14 @@
         }
 
         // Projeto
-        $projeto_metragem                  = $Validator->Validate($_POST['projeto_metragem'], "Metragem", "required=1&length=5");
         // se for premio, torna obrigatorio o campo abaixo
-        if ($projeto_metragem_padrao == 'premio') {
+        $tipo_solicitacao                  = $Validator->Validate($_POST['tipo_solicitacao'], "Tipo de Solicitação", "required=1");
+        if ($tipo_solicitacao == 'premio') {
             $projeto_pergunta                  = $Validator->Validate($_POST['projeto_pergunta'], "Especificar Festival, edição e categoria em que recebeu o Prêmio CTAv", "required=1&length=5");
         } else {
             $projeto_pergunta                  = $Validator->Validate($_POST['projeto_pergunta'], "Especificar Festival, edição e categoria em que recebeu o Prêmio CTAv", "length=5");
         }
+        $projeto_metragem                  = $Validator->Validate($_POST['projeto_metragem'], "Metragem", "required=1&length=5");
         $projeto_duracao                   = $Validator->Validate($_POST['projeto_duracao'], "Duração", "required=1&max_length=50");
         $projeto_formato_original          = $Validator->Validate($_POST['projeto_formato_original'], "Formato Original", "required=1&max_length=50");
         $projeto_suporte_original          = $Validator->Validate($_POST['projeto_suporte_original'], "Suporte Original", "required=1&max_length=50");
@@ -316,7 +317,7 @@
                 <td colspan='2'>Término em: {$equipamentos_termino}</td>
               </tr>
               <tr bgcolor='#f6f9fa'>
-                <th align='right'>Descrição da locação de filmagem/gravação:</th>
+                <th align='right'>Descrição da loação de filmagem/gravação:</th>
                 <td colspan='3'>{$equipamentos_locacao}</td>
               </tr>
               <tr>
@@ -626,8 +627,8 @@
                <tr>
               <th align='right' valign='top'>Tipo de Solicitação: *</th>
                 <td colspan='3'>
-                  <input id="projeto_metragem_padrao" class="radio" type='radio' name='tipo_solicitacao' value='padrao' <?php if($tipo_solicitacao == 'padrao') print "checked='checked'"; ?> /> Solicitação padrão <br />
-                  <input id="projeto_metragem_premio" class="radio" type='radio' name='tipo_solicitacao' value='premio' <?php if($tipo_solicitacao == 'premio') print "checked='checked'"; ?> /> Retirada de Prêmio CTAv recebido <br /><br />
+                  <input id="tipo_solicitacao" class="radio" type='radio' name='tipo_solicitacao' value='padrao' <?php if($tipo_solicitacao == 'padrao') print "checked='checked'"; ?> /> Solicitação padrão <br />
+                  <input id="tipo_solicitacao" class="radio" type='radio' name='tipo_solicitacao' value='premio' <?php if($tipo_solicitacao == 'premio') print "checked='checked'"; ?> /> Retirada de Prêmio CTAv recebido <br /><br />
                   
                   <div id="premio" class="oculto">
     			<hr /> <h3>Especificar Festival, edição e categoria em que recebeu o Prêmio CTAv*:</h3>
@@ -828,7 +829,7 @@
               <tr>
                 <th align='right'>Valor orçado:</th>
                 <td><input type="text" name="filme_valor" maxlength='100' value="<?php print $filme_valor; ?>" /></td>
-                <th align='right'>Valor captado, ou contratado, até esta data:</th>
+                <th align='right'>Valor captado, ou contratado, até esta data: *</th>
                 <td><input type="text" name="filme_valor_captado" maxlength="100" value="<?php print $filme_valor_captado; ?>" />
                 </td>
               </tr>
@@ -844,25 +845,25 @@
                 <td colspan='3'><input type="text" name="filme_distribuidora" maxlength="100" value="<?php print $filme_distribuidora; ?>" /></td>
               </tr>
               <tr bgcolor='#f6f9fa'>
-                <th align='right'>Filmografia do Diretor:</th>
+                <th align='right'>Filmografia do Diretor: *</th>
                 <td colspan='3'><input type="text" name="filme_filmografia" maxlength="100" value="<?php print $filme_filmografia; ?>" /></td>
               </tr>
               <tr>
-                <th align='right' valign='top'>Currículo Resumido do Diretor:</th>
+                <th align='right' valign='top'>Currículo Resumido do Diretor: *</th>
                 <td colspan='3'>
                   <textarea id='filme_diretor_curriculo' name="filme_diretor_curriculo" cols='50' rows='5'><?php print $filme_diretor_curriculo; ?></textarea><br />
                   <small id="filme_diretor_curriculo_limit">max. 2000 caracteres</small>
                 </td>
               </tr>
               <tr bgcolor='#f6f9fa'>
-                <th align='right' valign='top'>Currículo Resumido do Produtor:</th>
+                <th align='right' valign='top'>Currículo Resumido do Produtor: *</th>
                 <td colspan='3'>
                   <textarea id='filme_produtor_curriculo' name="filme_produtor_curriculo" cols='50' rows='5'><?php print $filme_produtor_curriculo; ?></textarea><br />
                   <small id="filme_produtor_curriculo_limit">max. 2000 caracteres</small>
                 </td>
               </tr>
               <tr>
-                <th align='right'>O Diretor e ou Produtor já receberam apoio do CTAv?</th>
+                <th align='right'>O Diretor e ou Produtor já receberam apoio do CTAv? *</th>
                 <td>
                   <input type="radio" name="filme_apoio_ctav" value="s" <?php if($filme_apoio_ctav == 's') print "checked='checked'"; ?> /> Sim
                   <input type="radio" name="filme_apoio_ctav" value="n" <?php if($filme_apoio_ctav == 'n') print "checked='checked'"; ?> /> Não

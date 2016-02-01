@@ -79,15 +79,15 @@
         }
 
         // Projeto
-        $projeto_metragem                  = $Validator->Validate($_POST['projeto_metragem'], "Metragem", "required=1&length=5");
         // se for premio, torna obrigatorio o campo abaixo
-        if ($projeto_metragem_padrao == 'premio') {
+        $tipo_solicitacao                  = $Validator->Validate($_POST['tipo_solicitacao'], "Tipo de Solicitação", "required=1");
+        if ($tipo_solicitacao == 'premio') {
             $projeto_pergunta                  = $Validator->Validate($_POST['projeto_pergunta'], "Especificar Festival, edição e categoria em que recebeu o Prêmio CTAv", "required=1&length=5");
         } else {
             $projeto_pergunta                  = $Validator->Validate($_POST['projeto_pergunta'], "Especificar Festival, edição e categoria em que recebeu o Prêmio CTAv", "length=5");
         }
-
-	$projeto_duracao                   = $Validator->Validate($_POST['projeto_duracao'], "Duração", "required=1&max_length=50");
+        $projeto_metragem                  = $Validator->Validate($_POST['projeto_metragem'], "Metragem", "required=1&length=5");
+        $projeto_duracao                   = $Validator->Validate($_POST['projeto_duracao'], "Duração", "required=1&max_length=50");
         $projeto_formato_original          = $Validator->Validate($_POST['projeto_formato_original'], "Formato Original", "required=1&max_length=50");
         $projeto_suporte_original          = $Validator->Validate($_POST['projeto_suporte_original'], "Suporte Original", "required=1&max_length=50");
         $projeto_genero                    = $Validator->Validate($_POST['projeto_genero'], "Gênero", "required=1&max_length=50");
@@ -405,6 +405,10 @@
           $headers .= "X-Mailer: PHP;\n";
           $headers .= "From: MinC <automatico@cultura.gov.br>;\n";
 
+
+// parei aqui: olhando tipo_solicitacao, verificar se pega if e se cospe valores ok
+print_r($message);die();
+
           // Fernão 27/01/2016: ALTEREI DE wp_mail() para mail() pois a primeira não funcionava =/
           // if(wp_mail($to, $subject, $message, $headers)) :
           if(mail($to, $subject, $message, $headers)) :
@@ -605,8 +609,8 @@
               <tr>
               <th align='right' valign='top'>Tipo de Solicitação: *</th>
                 <td colspan='3'>
-                  <input id="projeto_metragem_padrao" class="radio" type='radio' name='tipo_solicitacao' value='padrao' <?php if($tipo_solicitacao == 'padrao') print "checked='checked'"; ?> /> Solicitação padrão <br />
-                  <input id="projeto_metragem_premio" class="radio" type='radio' name='tipo_solicitacao' value='premio' <?php if($tipo_solicitacao == 'premio') print "checked='checked'"; ?> /> Retirada de Prêmio CTAv recebido <br /><br />
+                  <input id="tipo_solicitacao" class="radio" type='radio' name='tipo_solicitacao' value='padrao' <?php if($tipo_solicitacao == 'padrao') print "checked='checked'"; ?> /> Solicitação padrão <br />
+                  <input id="tipo_solicitacao" class="radio" type='radio' name='tipo_solicitacao' value='premio' <?php if($tipo_solicitacao == 'premio') print "checked='checked'"; ?> /> Retirada de Prêmio CTAv recebido <br /><br />
                   
                   <div id="premio" class="oculto">
     			<hr /> <h3>Especificar Festival, edição e categoria em que recebeu o Prêmio CTAv*:</h3>

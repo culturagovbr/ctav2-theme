@@ -458,7 +458,7 @@
           $headers .= "Content-type: text/html; charset=UTF-8;\n";
           $headers .= "X-Mailer: PHP;\n";
           $headers .= "From: MinC <automatico@cultura.gov.br>;\n";
-print_r($message);die;
+
           // Fernão 27/01/2016: ALTEREI DE wp_mail() para mail() pois a primeira não funcionava =/
           // if(wp_mail($to, $subject, $message, $headers)) :
           if(mail($to, $subject, $message, $headers)) :

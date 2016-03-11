@@ -405,10 +405,6 @@
           $headers .= "X-Mailer: PHP;\n";
           $headers .= "From: MinC <automatico@cultura.gov.br>;\n";
 
-
-// parei aqui: olhando tipo_solicitacao, verificar se pega if e se cospe valores ok
-print_r($message);die();
-
           // Fernão 27/01/2016: ALTEREI DE wp_mail() para mail() pois a primeira não funcionava =/
           // if(wp_mail($to, $subject, $message, $headers)) :
           if(mail($to, $subject, $message, $headers)) :

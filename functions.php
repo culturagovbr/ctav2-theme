@@ -31,7 +31,13 @@
   }
 add_action('init', 'modify_jquery_version');
 
-
+function load_carrossel() {
+    wp_enqueue_script('jquery-flexslider', get_template_directory_uri().'/js/flexslider-min.js', array('jquery'));        
+    wp_enqueue_script( 'carrossel_home', get_template_directory_uri() . '/js/carrossel_home.js');
+}
+add_action('init', 'load_carrossel');
+add_image_size('home_carrossel', 728, 200, false);
+    
 // permite tags adicionais no tinymce 
 function ctav_custom_mce_options($init) {
     $ext = 'style,pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src]';

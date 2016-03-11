@@ -8,7 +8,6 @@
 	  <!-- Destaque -->
           <div id="destaque" class="bloco-home">
 	    <h2>Destaques</h2>
-	    <ul>
 <?php
 $cat_destaque = get_category_by_slug('destaque');
 $cat_outras_noticias = get_category_by_slug('outras_noticias');
@@ -17,18 +16,41 @@ $cat_area_2 = get_category_by_slug('area_2');
 $cat_area_3 = get_category_by_slug('area_3');
 
 // area_1
-$posts_destaque = new WP_Query(array('posts_per_page' => '1', 'category__and' => array($cat_destaque->term_id, $cat_area_1->term_id)));
+$posts_destaque = new WP_Query(array('posts_per_page' => '3', 'category__and' => array($cat_destaque->term_id, $cat_area_1->term_id)));
 
-if ($posts_destaque->have_posts()) { ?>
-    <?php while ($posts_destaque->have_posts()) : $posts_destaque->the_post(); ?>
-        <li>
-            <a href="<?php the_permalink(); ?>" class="bordaNeg" title="<?php the_title(); ?>"><?php if ( has_post_thumbnail() )  the_post_thumbnail(array(230, 135) ); ?></a>
-	    <h4><a rel="category tag" title="View all posts in Notícias" href="http://www.ctav.gov.br/categoria/noticias/">Notícias</a></h4>
-	    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-            <a href="<?php the_permalink(); ?>"><?php the_excerpt(); ?></a>
-        </li>
-    <?php endwhile; ?>
-<?php } ?>
+?>
+    <section class="features col-xs-12 carrossel">
+        <?php if ( '' != get_the_post_thumbnail() ) : ?>
+            <header class="col-xs-12">
+    
+            <div class="destaques-content">
+                <div class="loading">
+				    <h2>Carregando...</h2>
+                </div>
+    
+                <div class="destaques">
+                <?php foreach ($posts_destaque->posts as $post ): ?>
+                    <div class="destaque">
+    	              <div class="img-responsive">
+                          <img src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full')[0]; ?>">
+                      </div>
+    				  <div class="destaque-text">
+                          <a href="<?php echo get_permalink($post->ID); ?>">
+                              <h1><?php echo $post->post_title; ?></h1>
+                          </a>
+	                  </div>
+
+                    </div> <!-- end destaque -->
+                <?php endforeach; ?>
+                </div> <!-- end destaques -->
+                <div class="navigation"></div>
+            </div> <!-- end destaques-content -->
+            </header>
+        
+        <?php endif; ?>
+    </section>
+
+    <ul>
 <?php 
 // area_2
 $posts_destaque = new WP_Query(array('posts_per_page' => '1', 'category__and' => array($cat_destaque->term_id, $cat_area_2->term_id)));

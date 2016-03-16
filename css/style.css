@@ -2028,14 +2028,16 @@ clear:both;
 
 .destaques-content .destaques .destaque {
   display: block;
-  position: relative; }
+  position: relative;
+  height: 250px;
+}
 
 .destaques-content .destaques .destaque .destaque-text {
   clear: both;
   text-align: center;
   background-color: #f0ac0e;
   position: absolute;
-  top: 66%;
+  top: 77%;
   opacity: 0.9;
   padding: 8px 20px 0 20px; }
 

@@ -32,7 +32,7 @@ $posts_destaque = new WP_Query(array('posts_per_page' => '3', 'category__and' =>
                 <?php foreach ($posts_destaque->posts as $post ): ?>
                     <div class="destaque">
     	              <div class="img-responsive">
-                          <img src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full')[0]; ?>">
+                          <img src="<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full'); echo $image[0]; ?>">
                       </div>
     				  <div class="destaque-text">
                           <a href="<?php echo get_permalink($post->ID); ?>">

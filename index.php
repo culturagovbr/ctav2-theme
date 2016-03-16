@@ -37,7 +37,9 @@ $posts_destaque = new WP_Query(array('posts_per_page' => '3', 'category__and' =>
 			  </a>
                       </div>
     				  <div class="destaque-text">
-                          <h1><?php echo $post->post_title; ?></h1>
+                          <a href="<?php echo get_permalink($post->ID); ?>">    
+                            <h1><?php echo $post->post_title; ?></h1>
+			  </a>
 	                  </div>
 
                     </div> <!-- end destaque -->

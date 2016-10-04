@@ -37,8 +37,8 @@
 	$window.resize(function() {
 	    var gridSize = getGridSize();
 	    
-	    flexslider.vars.minItems = gridSize;
-	    flexslider.vars.maxItems = gridSize;
+	    //flexslider.vars.minItems = gridSize;
+	    //flexslider.vars.maxItems = gridSize;
 	});	
     });
 })(jQuery);		    

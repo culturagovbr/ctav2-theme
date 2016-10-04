@@ -1,4 +1,8 @@
-
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
   <head>
@@ -37,7 +41,6 @@
      <!-- JavaScript -->
     <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery-1.2.6.pack.js"></script>
     <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery.cycle-2.3.pack.js"></script>
-    <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/menu.js"></script>
     <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/backtotop.js"></script>
     <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/limitchars.js"></script>
     <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/stripe.js"></script>
@@ -74,7 +77,6 @@
             $_tamanhoLayout   = '980';
             $_margemTopLayout = '485';
             $_margemMenu      = '16';
-            require_once ( '/var/www/www.ctav.gov.br/menu.php' );
             ?>
 
 

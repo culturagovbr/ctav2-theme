@@ -89,7 +89,7 @@ if ($posts_destaque->have_posts()) { ?>
 	    <ul>
 <?php
 // area_1
-    $posts_outras_noticias = new WP_Query(array('posts_per_page' => '1', 'category__and' => array($cat_outras_noticias->term_id, $cat_area_1->term_id), 'category_not_in' => array($cat->destaque->term_id)));
+    $posts_outras_noticias = new WP_Query(array('posts_per_page' => '1', 'category__and' => array($cat_outras_noticias->term_id, $cat_area_1->term_id), 'category_not_in' => array($cat_destaque->term_id)));
 
 if ($posts_outras_noticias->have_posts()) { ?>
     <?php while ($posts_outras_noticias->have_posts()) : $posts_outras_noticias->the_post(); ?>

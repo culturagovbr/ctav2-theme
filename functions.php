@@ -24,12 +24,12 @@
 
   function modify_jquery_version() {
     
-        wp_deregister_script('jquery');
-        wp_register_script('jquery', get_template_directory_uri() . '/js/jquery-1.9.0.js', false, '1.9.0  ');
-        wp_enqueue_script('jquery');
+//        wp_deregister_script('jquery');
+//        wp_register_script('jquery', get_template_directory_uri() . '/js/jquery-1.9.0.js', false, '1.9.0  ');
+//        wp_enqueue_script('jquery');
     
   }
-add_action('init', 'modify_jquery_version');
+//add_action('init', 'modify_jquery_version');
 
 function load_carrossel() {
     wp_enqueue_script('jquery-flexslider', get_template_directory_uri().'/js/flexslider-min.js', array('jquery'));        
